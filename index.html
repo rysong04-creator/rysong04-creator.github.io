@@ -388,7 +388,7 @@ html,body{background:#fff!important;}
 <div class="rs-menu-overlay" id="rsMenuOverlay">
   <button class="rs-menu-close" id="rsMenuClose">&#10005;</button>
   <nav>
-    <a href="#">Work</a>
+    <a href="#section_9opph6sj0" id="rsWorkLink">Work</a>
     <a href="#">Play</a>
   </nav>
 </div>
@@ -1616,6 +1616,8 @@ var semplice = {"default_api_url":"https:\/\/michellegore.com\/wp-json","semplic
   menuBtn.addEventListener('click',   function(){ menuOverlay.classList.add('open'); });
   menuClose.addEventListener('click', function(){ menuOverlay.classList.remove('open'); });
   menuOverlay.addEventListener('click', function(e){ if(e.target===menuOverlay) menuOverlay.classList.remove('open'); });
+  var workLink = document.getElementById('rsWorkLink');
+  if(workLink) workLink.addEventListener('click', function(){ menuOverlay.classList.remove('open'); });
 })();
 			</script>
 			</body>
