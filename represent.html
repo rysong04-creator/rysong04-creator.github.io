@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Represent Ryan Song</title>
+<link rel="icon" href="assets/2021-favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@100;300;400;500;700&display=swap">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Jost', sans-serif;
+  background: #fff;
+  color: #111;
+  font-weight: 300;
+}
+
+.cs-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32px 60px;
+  border-bottom: 1px solid #e8e8e8;
+}
+.cs-nav-name {
+  font-weight: 100;
+  font-size: 22px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #111;
+}
+.cs-nav-back {
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #888;
+  transition: color 0.2s;
+}
+.cs-nav-back:hover { color: #111; }
+
+.cs-wrap {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 80px 40px 160px;
+}
+
+.cs-eyebrow {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: 20px;
+}
+.cs-title {
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+.cs-subtitle {
+  font-size: 1.15rem;
+  font-weight: 300;
+  line-height: 1.75;
+  color: #444;
+  max-width: 680px;
+  margin-bottom: 16px;
+}
+.cs-meta-line {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #aaa;
+  margin-bottom: 64px;
+}
+
+.cs-img {
+  width: 100%;
+  background: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #aaa;
+  margin: 40px 0;
+}
+.cs-img-tall  { aspect-ratio: 4/3; }
+.cs-img-wide  { aspect-ratio: 16/9; }
+.cs-img-phone { aspect-ratio: 9/16; max-width: 320px; }
+
+.cs-rail {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 32px;
+  padding: 40px 0;
+  border-top: 1px solid #e8e8e8;
+  border-bottom: 1px solid #e8e8e8;
+  margin-bottom: 72px;
+}
+.cs-rail-label {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #aaa;
+  margin-bottom: 8px;
+}
+.cs-rail-value {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.6;
+  color: #111;
+}
+
+.cs-section { margin-bottom: 80px; }
+.cs-section-label {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #aaa;
+  margin-bottom: 20px;
+}
+.cs-h2 {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 300;
+  line-height: 1.25;
+  margin-bottom: 20px;
+}
+.cs-h2-italic {
+  font-style: italic;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 300;
+  line-height: 1.25;
+  margin-bottom: 20px;
+}
+.cs-p {
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.85;
+  color: #333;
+  margin-bottom: 20px;
+}
+.cs-p:last-child { margin-bottom: 0; }
+
+.cs-quote {
+  border-left: 2px solid #111;
+  padding: 4px 0 4px 24px;
+  margin: 28px 0;
+}
+.cs-quote p {
+  font-size: 1rem;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.7;
+  color: #555;
+  margin-bottom: 8px;
+}
+.cs-quote p:last-child { margin-bottom: 0; }
+
+.cs-problems { list-style: none; margin: 24px 0; }
+.cs-problems li {
+  display: flex;
+  gap: 20px;
+  padding: 20px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: #333;
+}
+.cs-problems li:first-child { border-top: 1px solid #eee; }
+.cs-problem-num {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  color: #aaa;
+  padding-top: 4px;
+  flex-shrink: 0;
+  width: 24px;
+}
+
+.cs-divider { border: none; border-top: 1px solid #e8e8e8; margin: 64px 0; }
+
+.cs-footer {
+  text-align: center;
+  padding: 60px 0 80px;
+  border-top: 1px solid #e8e8e8;
+}
+.cs-footer-label {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #aaa;
+  margin-bottom: 16px;
+}
+.cs-footer a {
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #111;
+  text-decoration: none;
+  border-bottom: 1px solid #111;
+  padding-bottom: 2px;
+  transition: opacity 0.2s;
+}
+.cs-footer a:hover { opacity: 0.5; }
+
+.cs-agency-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 24px 0;
+}
+.cs-agency-tag {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #111;
+  border: 1px solid #e0e0e0;
+  padding: 10px 20px;
+}
+</style>
+</head>
+<body>
+
+<nav class="cs-nav">
+  <a href="index.html" class="cs-nav-name">Ryan Song</a>
+  <a href="index.html" class="cs-nav-back">&#8592; Back to work</a>
+</nav>
+
+<main class="cs-wrap">
+
+  <!-- Hero -->
+  <p class="cs-eyebrow">Represent &middot; Product Designer &middot; Feb 2026 &ndash; Present &middot; Live</p>
+  <h1 class="cs-title">Represent</h1>
+  <p class="cs-subtitle">Young talent and modeling agencies have no trustworthy shared place to find each other. I designed a two-sided app that serves both &mdash; and it&rsquo;s currently onboarding real agencies.</p>
+  <p class="cs-meta-line">Consumer Product &nbsp;&middot;&nbsp; Two-sided marketplace &nbsp;&middot;&nbsp; Feb 2026 &ndash; present</p>
+
+  <!-- Meta rail -->
+  <div class="cs-rail">
+    <div>
+      <p class="cs-rail-label">Role</p>
+      <p class="cs-rail-value">Product Designer (solo)</p>
+    </div>
+    <div>
+      <p class="cs-rail-label">Timeframe</p>
+      <p class="cs-rail-value">Feb 2026 &ndash; present</p>
+    </div>
+    <div>
+      <p class="cs-rail-label">Users</p>
+      <p class="cs-rail-value">Talent (18&ndash;26) and modeling agencies</p>
+    </div>
+    <div>
+      <p class="cs-rail-label">Tools</p>
+      <p class="cs-rail-value">Figma &middot; Claude (design-to-code)</p>
+    </div>
+    <div>
+      <p class="cs-rail-label">Status</p>
+      <p class="cs-rail-value">Live &mdash; onboarding agency partners</p>
+    </div>
+  </div>
+
+  <!-- 1. The Problem -->
+  <div class="cs-section">
+    <p class="cs-section-label">The Problem</p>
+    <h2 class="cs-h2">Three large problems the modeling world hasn't solved</h2>
+    <div class="cs-img cs-img-wide">[IMAGE: Hero shot — strongest app screen or device mockup]</div>
+    <ul class="cs-problems">
+      <li>
+        <span class="cs-problem-num">01</span>
+        <span>People who want to be models don&rsquo;t know where to start, and don&rsquo;t want to invest time applying when they might be rejected with no feedback.</span>
+      </li>
+      <li>
+        <span class="cs-problem-num">02</span>
+        <span>Agencies deal with a massive surplus of applicants arriving through multiple platforms at once &mdash; managing them is chaotic and inefficient.</span>
+      </li>
+      <li>
+        <span class="cs-problem-num">03</span>
+        <span>Talent are wary. The line between a legitimate agency and a scam is not always visible, and that fear stops people from applying at all.</span>
+      </li>
+    </ul>
+    <p class="cs-p">I&rsquo;ve worked in the modeling industry myself, so I understand how talent presents itself and how agencies actually evaluate people. I know what it&rsquo;s like to be on both sides. That firsthand knowledge shaped the product.</p>
+  </div>
+
+  <!-- 2. Two sides -->
+  <div class="cs-section">
+    <p class="cs-section-label">Designing for Two Sides</p>
+    <h2 class="cs-h2">The talent side</h2>
+    <div class="cs-img cs-img-wide">[IMAGE: Talent-facing flow — profile creation or onboarding screens]</div>
+    <p class="cs-p">Say you want to become a model. What do you even do? You can post on social media, DM agencies on Instagram, submit through agency websites, or wait in a casting line for hours. So many paths &mdash; all time-consuming, none of them easy. And after all that effort, you still don&rsquo;t know if anyone actually saw your application.</p>
+    <p class="cs-p">Represent collapses that into one place: build your profile once and be discoverable to every agency on the platform.</p>
+
+    <h2 class="cs-h2" style="margin-top:48px;">The agency side</h2>
+    <div class="cs-img cs-img-wide">[IMAGE: Agency-facing flow — talent discovery or vetting screens]</div>
+    <p class="cs-p">Agencies pay in-house and freelance scouts to find candidates. Those scouts scroll through DMs, comb through website submissions, or just get lucky spotting someone in public. Either way, there&rsquo;s a massive volume of applicants to sort through with no unified system.</p>
+    <p class="cs-p">Represent gives agencies a structured, searchable pool &mdash; candidates come pre-organized, not scattered across platforms.</p>
+
+    <h2 class="cs-h2" style="margin-top:48px;">The trust problem</h2>
+    <div class="cs-quote">
+      <p>Agencies are invite-only on Represent. Scouts who want to offer contracts must do so within the app&rsquo;s chat system &mdash; keeping all outreach verifiable and on record.</p>
+    </div>
+    <p class="cs-p">By controlling who can reach talent and how, Represent removes the ambiguity that makes people afraid to engage in the first place.</p>
+  </div>
+
+  <!-- 3. Design to code -->
+  <div class="cs-section">
+    <p class="cs-section-label">Shipping It</p>
+    <h2 class="cs-h2">Design-to-code, without a team</h2>
+    <div class="cs-img cs-img-wide">[IMAGE: Figma frames beside built product screens]</div>
+    <p class="cs-p">I designed every screen in Figma &mdash; working through user flows, visual decisions, and edge cases before touching code. Then I handed those designs to Claude to build the backend and move the designs into working application code.</p>
+    <p class="cs-p">That pipeline let me iterate far faster than a traditional handoff would allow. A design decision made in the morning could be a working feature by the afternoon.</p>
+  </div>
+
+  <!-- 4. Outcome -->
+  <div class="cs-section">
+    <p class="cs-section-label">Outcome</p>
+    <h2 class="cs-h2">Real agencies. Real traction.</h2>
+    <div class="cs-img cs-img-wide">[IMAGE: Live product screenshot or agency partner logos]</div>
+    <p class="cs-p">Represent is currently onboarding modeling agencies as early partners &mdash; with more in progress.</p>
+    <div class="cs-agency-list">
+      <span class="cs-agency-tag">Photogenics</span>
+      <span class="cs-agency-tag">State Management</span>
+      <span class="cs-agency-tag">Nomad</span>
+    </div>
+  </div>
+
+  <hr class="cs-divider">
+
+  <!-- 5. Reflection -->
+  <div class="cs-section">
+    <p class="cs-section-label">Reflection</p>
+    <h2 class="cs-h2-italic">What I took from it</h2>
+    <p class="cs-p">Building Represent taught me that a product starts by identifying a problem and truly understanding every stakeholder in the system. Only once I understood the real underlying issue on both sides was I able to design a solution that actually served them. The hardest part wasn&rsquo;t the design &mdash; it was resisting the urge to solve the surface problem before I&rsquo;d found the real one.</p>
+  </div>
+
+</main>
+
+<footer class="cs-footer">
+  <p class="cs-footer-label">Next project</p>
+  <a href="index.html">Back to all work</a>
+</footer>
+
+</body>
+</html>
