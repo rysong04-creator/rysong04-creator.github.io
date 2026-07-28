@@ -94,8 +94,8 @@ body {
   color: #aaa;
   margin: 40px 0;
 }
-.cs-img-tall  { aspect-ratio: 4/3; }
 .cs-img-wide  { aspect-ratio: 16/9; }
+.cs-img-tall  { aspect-ratio: 4/3; }
 
 .cs-rail {
   display: grid;
@@ -167,31 +167,6 @@ body {
 }
 .cs-quote p:last-child { margin-bottom: 0; }
 
-/* Stat grid */
-.cs-stat-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 32px;
-  margin: 32px 0;
-}
-.cs-stat {
-  padding: 24px;
-  border: 1px solid #e8e8e8;
-}
-.cs-stat-num {
-  font-size: 2.2rem;
-  font-weight: 100;
-  line-height: 1;
-  margin-bottom: 8px;
-}
-.cs-stat-label {
-  font-size: 12px;
-  font-weight: 300;
-  line-height: 1.5;
-  color: #666;
-}
-
-/* Stage breakdown */
 .cs-stages { margin: 32px 0; }
 .cs-stage {
   padding: 24px 0;
@@ -220,7 +195,6 @@ body {
   line-height: 1.6;
 }
 
-/* Recommendation list */
 .cs-recs { list-style: none; margin: 24px 0; }
 .cs-recs li {
   display: flex;
@@ -284,134 +258,134 @@ body {
   <!-- Hero -->
   <p class="cs-eyebrow">Tinder &middot; User Research &amp; Product Strategy &middot; UC Davis &middot; 2025</p>
   <h1 class="cs-title">Why Dating Apps Break</h1>
-  <p class="cs-subtitle">Catfishing isn't a user problem it's a system problem. My team traced the entire failure chain on Tinder, from a 60-second sign-up to a broken moderation queue, and designed a future-state system to fix the incentives behind it.</p>
-  <p class="cs-meta-line">User Research &amp; Product Strategy &nbsp;&middot;&nbsp; Team of 8 &nbsp;&middot;&nbsp; UC Davis, 2025</p>
+  <p class="cs-subtitle">Catfishing isn&rsquo;t a user problem &mdash; it&rsquo;s a system problem. My team diagnosed the whole failure chain on Tinder, traced it to one root cause, and designed a system to fix it.</p>
+  <p class="cs-meta-line">User Research &amp; Product Strategy &nbsp;&middot;&nbsp; Team of 8 &nbsp;&middot;&nbsp; 2025</p>
 
   <!-- Meta rail -->
   <div class="cs-rail">
-    <div class="cs-rail-item">
+    <div>
       <p class="cs-rail-label">Role</p>
-      <p class="cs-rail-value">[Your specific role on the team of 8]</p>
+      <p class="cs-rail-value">Team Lead</p>
     </div>
-    <div class="cs-rail-item">
+    <div>
       <p class="cs-rail-label">Timeframe</p>
-      <p class="cs-rail-value">Mar Jun 2025</p>
+      <p class="cs-rail-value">Mar &ndash; Jun 2025</p>
     </div>
-    <div class="cs-rail-item">
+    <div>
       <p class="cs-rail-label">Team</p>
       <p class="cs-rail-value">8 (Team 5), UC Davis</p>
     </div>
-    <div class="cs-rail-item">
-      <p class="cs-rail-label">Methods</p>
-      <p class="cs-rail-value">User survey, systems analysis, competitive research, future-state concept design</p>
+    <div>
+      <p class="cs-rail-label">Focus</p>
+      <p class="cs-rail-value">Tinder, with implications for other volume-based platforms</p>
     </div>
-    <div class="cs-rail-item">
+    <div>
+      <p class="cs-rail-label">Methods</p>
+      <p class="cs-rail-value">User research, systems analysis, future-state concept design</p>
+    </div>
+    <div>
       <p class="cs-rail-label">Recognition</p>
       <p class="cs-rail-value">Grade A &middot; Presented to industry executives</p>
     </div>
   </div>
 
-  <!-- Hook -->
+  <!-- 1. The Problem -->
   <div class="cs-section">
-    <p class="cs-section-label">The Hook</p>
-    <div class="cs-img cs-img-wide">[IMAGE "Filbert, 30" catfish Tinder card opener]</div>
-    <p class="cs-p">We opened with a joke that isn't really a joke: a literal catfish with a Tinder profile. Then the real number: <strong>our research found ~79% of users reported interacting with a catfish.</strong></p>
-    <p class="cs-p">The question we set out to answer wasn't "how do we catch catfish" it was <strong>why does the system make catfishing so easy?</strong></p>
+    <p class="cs-section-label">The Problem</p>
+    <h2 class="cs-h2-italic">&ldquo;Meet Filbert, 30.&rdquo;</h2>
+    <div class="cs-img cs-img-wide">[IMAGE: &ldquo;Filbert, 30&rdquo; catfish Tinder card opener]</div>
+    <p class="cs-p">We opened our presentation with a joke that isn&rsquo;t really a joke: a literal catfish with a Tinder profile. Then the real number &mdash; our research found roughly 79% of users reported interacting with a catfish.</p>
+    <p class="cs-p">The question we set out to answer wasn&rsquo;t &ldquo;how do we catch catfish.&rdquo; It was: <strong>why does the system make catfishing so easy?</strong> That reframe drove the entire project.</p>
   </div>
 
-  <!-- Research -->
+  <!-- 2. Process -->
   <div class="cs-section">
-    <p class="cs-section-label">Research Mapping the Failure Chain</p>
+    <p class="cs-section-label">Process</p>
     <h2 class="cs-h2">A weakness at every stage</h2>
-    <div class="cs-img cs-img-wide">[IMAGE Stage breakdown slides]</div>
+    <div class="cs-img cs-img-wide">[IMAGE: Stage breakdown research slides]</div>
+    <p class="cs-p">We mapped the problem against each stage of a user&rsquo;s journey on the platform and found a failure at each one.</p>
 
     <div class="cs-stages">
       <div class="cs-stage">
         <p class="cs-stage-name">Sign-Up</p>
-        <p class="cs-stage-finding">Account creation takes under a minute. Onboarding asks only for age, gender, a photo, and an optional bio.</p>
-        <p class="cs-stage-stat">Users can spin up multiple accounts with new emails and phone numbers.</p>
+        <p class="cs-stage-finding">Account creation takes under a minute. Users can create multiple accounts with new emails and phone numbers with no friction.</p>
       </div>
       <div class="cs-stage">
         <p class="cs-stage-name">Verification</p>
-        <p class="cs-stage-finding">No background checks. Verification is always optional, with a 24-72 hour wait.</p>
-        <p class="cs-stage-stat">51.6% of users deem verification unnecessary fewer than 20% are actually verified.</p>
+        <p class="cs-stage-finding">Verification is always optional, with a 24&ndash;72 hour wait. 51.6% of users deem it unnecessary &mdash; fewer than 20% are actually verified.</p>
       </div>
       <div class="cs-stage">
         <p class="cs-stage-name">Matching</p>
-        <p class="cs-stage-finding">41.3% were frustrated by mismatched outcomes. 43.5% saw profiles outside their expectations.</p>
-        <p class="cs-stage-stat">62% said matches feel random or low-quality.</p>
+        <p class="cs-stage-finding">62% of users say matches feel random or low-quality. 41.3% were frustrated by mismatched outcomes.</p>
       </div>
       <div class="cs-stage">
-        <p class="cs-stage-name">Profiles</p>
-        <p class="cs-stage-finding">54% update photos only after a major life change. 22.5% hadn't updated in over six months.</p>
+        <p class="cs-stage-name">Recency</p>
+        <p class="cs-stage-finding">22.5% of users hadn&rsquo;t updated their photos in over six months &mdash; meaning profiles don&rsquo;t reflect who people actually are.</p>
       </div>
       <div class="cs-stage">
         <p class="cs-stage-name">Moderation</p>
-        <p class="cs-stage-finding">87% of reports are decided in under two minutes. 1 moderator per ~50,000 users.</p>
-        <p class="cs-stage-stat">89% of banned users return via new credentials. 60% of users abandon their complaints.</p>
+        <p class="cs-stage-finding">1 moderator per ~50,000 users. 87% of reports are decided in under two minutes. 89% of banned users return via new credentials. 60% of reporters give up.</p>
       </div>
     </div>
+
+    <div class="cs-img cs-img-wide">[IMAGE: Root-cause slide]</div>
+    <div class="cs-quote">
+      <p>Every stage pointed to the same thing: Tinder&rsquo;s business model rewards volume, not trust. Faster sign-ups and more users mean more revenue, so the friction that would improve safety works directly against the product&rsquo;s own metrics.</p>
+    </div>
+    <p class="cs-p">That move &mdash; from scattered stage-level failures to one underlying business incentive &mdash; was the core finding of the project.</p>
   </div>
 
-  <!-- Real-world stakes -->
+  <!-- 3. Solution -->
   <div class="cs-section">
-    <p class="cs-section-label">Real-World Stakes</p>
-    <h2 class="cs-h2">Moderation failure isn't abstract</h2>
-    <div class="cs-img cs-img-wide">[IMAGE Anonymized real-world case slide]</div>
-    <p class="cs-p">We grounded the moderation failures in a documented real-world case: a man with multiple reported sexual-assault allegations who remained active on the app and was even algorithmically boosted into a premium visibility section long after being reported.</p>
-    <p class="cs-p">The case is a direct consequence of the system incentives. It isn't an edge case; it's what the current design produces at scale.</p>
-  </div>
-
-  <!-- Root cause -->
-  <div class="cs-section">
-    <p class="cs-section-label">Root Cause</p>
-    <h2 class="cs-h2-italic">"The business model rewards volume, not trust."</h2>
-    <div class="cs-img cs-img-wide">[IMAGE "Why does Tinder have these problems?" root-cause slide]</div>
-    <p class="cs-p">Every weakness pointed to the same incentive: more users and faster sign-ups mean more revenue, so friction that would improve safety real verification, active moderation works against the metrics the product optimizes for.</p>
-    <p class="cs-p">Catfishing is the symptom. The volume-first incentive is the disease.</p>
-  </div>
-
-  <!-- Future-state -->
-  <div class="cs-section">
-    <p class="cs-section-label">Future-State Design</p>
-    <h2 class="cs-h2">Re-pricing trust into the product</h2>
-    <div class="cs-img cs-img-wide">[IMAGE Future State / verification tier slides]</div>
+    <p class="cs-section-label">The Solution</p>
+    <h2 class="cs-h2">A system that re-prices trust</h2>
+    <div class="cs-img cs-img-wide">[IMAGE: Future State / verification-tier slides]</div>
+    <p class="cs-p">Because the problem was systemic, so was the fix. We proposed a future-state system that makes trust visible and rewarded at every stage:</p>
     <ul class="cs-recs">
       <li>
         <span class="cs-rec-num">01</span>
-        <span><strong>Account creation:</strong> require 2+ identity sources; use photo metadata to flag old or edited images at sign-up; new accounts earn visibility through profile quality, not by default.</span>
+        <span><strong>Account creation:</strong> require 2+ identity sources; flag old or edited photos via metadata; new accounts earn visibility through profile quality, not by default.</span>
       </li>
       <li>
         <span class="cs-rec-num">02</span>
-        <span><strong>Tiered verification:</strong> facial scan + ID mandatory, cross-referenced against public databases. Visible trust tiers: no checkmark (1 ID), green (2 IDs), blue (approved).</span>
+        <span><strong>Verification:</strong> mandatory facial scan + ID, cross-referenced against public databases. Visible trust tiers: no checkmark (unverified), green (1 ID), blue (fully approved).</span>
       </li>
       <li>
         <span class="cs-rec-num">03</span>
-        <span><strong>Recency enforcement:</strong> photo-refresh policy, engagement incentives, and activity audits to keep profiles current.</span>
+        <span><strong>Recency:</strong> photo-refresh policy, engagement incentives, and activity audits to keep profiles current.</span>
       </li>
       <li>
         <span class="cs-rec-num">04</span>
-        <span><strong>Moderation:</strong> regional moderation weighted by severity, device/data identifiers to block returning banned users, case-tracking notifications so reporters don't give up.</span>
+        <span><strong>Moderation:</strong> regional moderation weighted by severity; device and data identifiers to block returning banned users; case-tracking notifications so reporters don&rsquo;t abandon complaints.</span>
       </li>
     </ul>
   </div>
 
-  <!-- Beyond Tinder -->
+  <!-- 4. Stakes -->
   <div class="cs-section">
-    <p class="cs-section-label">Beyond Tinder</p>
-    <h2 class="cs-h2">The same failure shows up everywhere</h2>
-    <div class="cs-img cs-img-wide">[IMAGE "Beyond Tinder: What's Next?" slide]</div>
-    <p class="cs-p">The volume-first failure isn't unique to dating apps it shows up wherever platforms optimize for scale over trust: vacation rentals, job boards, social platforms.</p>
-    <p class="cs-p">Our broader thesis: <strong>private, verified communities</strong> trade raw volume for trust, and that trade is where these categories are headed.</p>
+    <p class="cs-section-label">The Stakes</p>
+    <h2 class="cs-h2">Moderation failure isn&rsquo;t abstract</h2>
+    <div class="cs-img cs-img-wide">[IMAGE: Anonymized case-example slide]</div>
+    <p class="cs-p">We grounded the moderation failures in a documented real-world case reported by [outlet]: a man with multiple sexual-assault allegations who remained active on the platform &mdash; and was algorithmically boosted into a premium visibility section &mdash; long after being reported.</p>
+    <p class="cs-p">This isn&rsquo;t an edge case. It&rsquo;s what the current incentive structure produces at scale.</p>
+  </div>
+
+  <!-- 5. Outcome -->
+  <div class="cs-section">
+    <p class="cs-section-label">Outcome</p>
+    <h2 class="cs-h2">Beyond Tinder</h2>
+    <div class="cs-img cs-img-wide">[IMAGE: &ldquo;Beyond Tinder&rdquo; thesis slide]</div>
+    <p class="cs-p">The volume-first failure isn&rsquo;t unique to dating apps &mdash; the same dynamic shows up in vacation rentals, job platforms, and social networks wherever scale is optimized over trust.</p>
+    <p class="cs-p">Our broader thesis: private, verified communities trade raw volume for trust, and that trade is where these categories are heading. We presented the project to industry executives and received a grade A.</p>
   </div>
 
   <hr class="cs-divider">
 
-  <!-- Reflection -->
+  <!-- 6. Reflection -->
   <div class="cs-section">
     <p class="cs-section-label">Reflection</p>
     <h2 class="cs-h2-italic">What I took from it</h2>
-    <p class="cs-p">[2-3 honest sentences. The hardest part was resisting a pure UI fix and instead following the evidence to a business-incentive root cause. A systems problem needed a systems answer.]</p>
+    <p class="cs-p">As team lead, my job was to keep eight people aimed at the same question instead of chasing eight different answers. The hardest discipline was resisting the obvious fix &mdash; a UI patch &mdash; and making the team follow the evidence through each stage until it led somewhere more honest: a business-incentive root cause. That&rsquo;s the part I&rsquo;m most proud of.</p>
   </div>
 
 </main>
