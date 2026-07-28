@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Petti Ryan Song</title>
+<link rel="icon" href="assets/2021-favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@100;300;400;500;700&display=swap">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Jost', sans-serif;
+  background: #fff;
+  color: #111;
+  font-weight: 300;
+}
+
+.cs-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32px 60px;
+  border-bottom: 1px solid #e8e8e8;
+}
+.cs-nav-name {
+  font-weight: 100;
+  font-size: 22px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #111;
+}
+.cs-nav-back {
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #888;
+  transition: color 0.2s;
+}
+.cs-nav-back:hover { color: #111; }
+
+.cs-wrap {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 80px 40px 160px;
+}
+
+.cs-eyebrow {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: 20px;
+}
+.cs-title {
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+.cs-subtitle {
+  font-size: 1.15rem;
+  font-weight: 300;
+  line-height: 1.75;
+  color: #444;
+  max-width: 680px;
+  margin-bottom: 16px;
+}
+.cs-meta-line {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #aaa;
+  margin-bottom: 64px;
+}
+
+.cs-img {
+  width: 100%;
+  background: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #aaa;
+  margin: 40px 0;
+}
+.cs-img-tall  { aspect-ratio: 4/3; }
+.cs-img-wide  { aspect-ratio: 16/9; }
+.cs-img-short { aspect-ratio: 21/9; }
+
+.cs-rail {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 32px;
+  padding: 40px 0;
+  border-top: 1px solid #e8e8e8;
+  border-bottom: 1px solid #e8e8e8;
+  margin-bottom: 72px;
+}
+.cs-rail-label {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #aaa;
+  margin-bottom: 8px;
+}
+.cs-rail-value {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.6;
+  color: #111;
+}
+
+.cs-section { margin-bottom: 80px; }
+.cs-section-label {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #aaa;
+  margin-bottom: 20px;
+}
+.cs-h2 {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 300;
+  line-height: 1.25;
+  margin-bottom: 20px;
+}
+.cs-h2-italic {
+  font-style: italic;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 300;
+  line-height: 1.25;
+  margin-bottom: 20px;
+}
+.cs-p {
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.85;
+  color: #333;
+  margin-bottom: 20px;
+}
+.cs-p:last-child { margin-bottom: 0; }
+
+.cs-quote {
+  border-left: 2px solid #111;
+  padding: 4px 0 4px 24px;
+  margin: 28px 0;
+}
+.cs-quote p {
+  font-size: 1rem;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.7;
+  color: #555;
+  margin-bottom: 8px;
+}
+.cs-quote p:last-child { margin-bottom: 0; }
+
+.cs-features { list-style: none; margin: 24px 0; }
+.cs-features li {
+  display: flex;
+  gap: 20px;
+  padding: 20px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: #333;
+}
+.cs-features li:first-child { border-top: 1px solid #eee; }
+.cs-feature-label {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #aaa;
+  padding-top: 4px;
+  flex-shrink: 0;
+  width: 120px;
+}
+
+.cs-divider { border: none; border-top: 1px solid #e8e8e8; margin: 64px 0; }
+
+.cs-footer {
+  text-align: center;
+  padding: 60px 0 80px;
+  border-top: 1px solid #e8e8e8;
+}
+.cs-footer-label {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #aaa;
+  margin-bottom: 16px;
+}
+.cs-footer a {
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #111;
+  text-decoration: none;
+  border-bottom: 1px solid #111;
+  padding-bottom: 2px;
+  transition: opacity 0.2s;
+}
+.cs-footer a:hover { opacity: 0.5; }
+</style>
+</head>
+<body>
+
+<nav class="cs-nav">
+  <a href="index.html" class="cs-nav-name">Ryan Song</a>
+  <a href="index.html" class="cs-nav-back">&#8592; Back to work</a>
+</nav>
+
+<main class="cs-wrap">
+
+  <!-- Hero -->
+  <p class="cs-eyebrow">Petti &middot; Product Designer &middot; Jan 2026 &ndash; Present &middot; In App Store Review</p>
+  <h1 class="cs-title">Petti</h1>
+  <p class="cs-subtitle">A screen time blocker for Gen Z and Gen Alpha teens that actually works &mdash; because it guilt-trips you into caring for a digital pet named Sewer instead of scrolling.</p>
+  <p class="cs-meta-line">Consumer Mobile &nbsp;&middot;&nbsp; Full Custom UI &nbsp;&middot;&nbsp; Jan 2026 &ndash; present</p>
+
+  <!-- Meta rail -->
+  <div class="cs-rail">
+    <div>
+      <p class="cs-rail-label">Role</p>
+      <p class="cs-rail-value">Product Designer (solo)</p>
+    </div>
+    <div>
+      <p class="cs-rail-label">Timeframe</p>
+      <p class="cs-rail-value">Jan 2026 &ndash; present</p>
+    </div>
+    <div>
+      <p class="cs-rail-label">Audience</p>
+      <p class="cs-rail-value">Gen Z &amp; Gen Alpha teens (10+)</p>
+    </div>
+    <div>
+      <p class="cs-rail-label">Tools</p>
+      <p class="cs-rail-value">Figma &middot; Adobe Illustrator &middot; Claude (design-to-code)</p>
+    </div>
+    <div>
+      <p class="cs-rail-label">Status</p>
+      <p class="cs-rail-value">In Apple App Store review</p>
+    </div>
+  </div>
+
+  <!-- 1. What Petti is -->
+  <div class="cs-section">
+    <p class="cs-section-label">What Petti Is</p>
+    <h2 class="cs-h2">A Tamagotchi for your screen time</h2>
+    <div class="cs-img cs-img-wide">[IMAGE: Hero shot — key screens + custom Sewer artwork]</div>
+    <p class="cs-p">I use a screen time blocker called Opal every day. The problem: I was still on my phone five-plus hours a day and I knew I needed to stop. Existing blockers tell you to stop &mdash; but they don&rsquo;t give you a reason to care.</p>
+    <p class="cs-p">After a conversation with a friend who loved Tamagotchi, I had the idea: what if your phone time directly affected a digital pet? Not a productivity streak &mdash; an actual character you&rsquo;d feel bad hurting. Petti was born from that.</p>
+  </div>
+
+  <!-- 2. The mascot -->
+  <div class="cs-section">
+    <p class="cs-section-label">The Mascot</p>
+    <h2 class="cs-h2-italic">&ldquo;I rescued a blind stray cat &mdash; and everyone who met her fell in love.&rdquo;</h2>
+    <div class="cs-img cs-img-tall">[IMAGE: Sewer sprite sheet / original character art]</div>
+    <p class="cs-p">During my junior year of college I rescued a stray cat. She was blind. Her name is Sewer. Everyone who met her immediately loved her &mdash; and that gave me the mechanic. If Sewer is the mascot, users will hesitate to open apps knowing it means hurting a digital version of her.</p>
+    <p class="cs-p">That emotional attachment is the product. Sewer isn&rsquo;t decoration on top of a blocker app &mdash; she is the reason the blocker works.</p>
+  </div>
+
+  <!-- 3. Visual system -->
+  <div class="cs-section">
+    <p class="cs-section-label">Designing the Visual System</p>
+    <h2 class="cs-h2">A full custom UI built from scratch</h2>
+    <div class="cs-img cs-img-wide">[IMAGE: Key app screens showing the UI system across states]</div>
+    <p class="cs-p">Every visual in Petti is original &mdash; designed in Figma and Adobe Illustrator, not pulled from a library. The goal was a visual system where the art and the interface feel like one thing, not a character dropped onto a generic UI.</p>
+    <ul class="cs-features">
+      <li>
+        <span class="cs-feature-label">Deterioration</span>
+        <span>Sewer&rsquo;s state visibly degrades the more time you spend on blocked apps &mdash; a direct, felt consequence rather than a number on a dashboard.</span>
+      </li>
+      <li>
+        <span class="cs-feature-label">Care system</span>
+        <span>Food, attention, and care mechanics keep users returning to Petti instead of their other apps.</span>
+      </li>
+      <li>
+        <span class="cs-feature-label">Love bar</span>
+        <span>A persistent indicator of Sewer&rsquo;s wellbeing &mdash; the emotional hook that makes the stakes feel real.</span>
+      </li>
+      <li>
+        <span class="cs-feature-label">Backstory</span>
+        <span>Sewer has an origin story. Context makes her feel like a character you adopted, not a game mechanic you unlocked.</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- 4. Design to code -->
+  <div class="cs-section">
+    <p class="cs-section-label">Shipping It</p>
+    <h2 class="cs-h2">From Figma to the App Store</h2>
+    <div class="cs-img cs-img-wide">[IMAGE: Figma frames beside the live app]</div>
+    <p class="cs-p">I designed every screen in Figma and Illustrator, then used Claude to convert those designs into production application code. Watching Sewer actually move on screen for the first time &mdash; that moment made the whole process worth it.</p>
+    <p class="cs-p">While the app waits for App Store approval, I&rsquo;m already thinking about what&rsquo;s next: an item shop, expanded world-building features, and mechanics that make Sewer&rsquo;s world feel even more alive.</p>
+  </div>
+
+  <!-- 5. Young audience -->
+  <div class="cs-section">
+    <p class="cs-section-label">Designing for a Younger Audience</p>
+    <h2 class="cs-h2">Responsibility was a design constraint, not an afterthought</h2>
+    <p class="cs-p">Petti&rsquo;s audience starts around age 10, which meant privacy and safety had to be built in from the start &mdash; not patched in later. I was not willing to ship something that took advantage of the people it was supposed to help.</p>
+    <p class="cs-p">Concretely: I added constraints on sign-ups, limited data collection to only what the app needs to function, and kept the entire experience age-friendly. The visual tone &mdash; cute, character-driven, non-threatening &mdash; wasn&rsquo;t just a style choice; it was appropriate for the audience.</p>
+  </div>
+
+  <!-- 6. Outcome -->
+  <div class="cs-section">
+    <p class="cs-section-label">Outcome</p>
+    <h2 class="cs-h2">Waiting on Apple</h2>
+    <div class="cs-img cs-img-wide">[IMAGE: App Store submission screenshot or live product screens]</div>
+    <p class="cs-p">Petti is currently in Apple App Store review. The product is complete and submitted &mdash; the next step is shipping it to real users and watching how they respond to Sewer.</p>
+  </div>
+
+  <hr class="cs-divider">
+
+  <!-- 7. Reflection -->
+  <div class="cs-section">
+    <p class="cs-section-label">Reflection</p>
+    <h2 class="cs-h2-italic">What I took from it</h2>
+    <p class="cs-p">You don&rsquo;t have to reinvent the wheel. Screen time blockers already exist. Tamagotchi already exists. What didn&rsquo;t exist was the specific combination &mdash; a blocker that uses emotional attachment instead of willpower as its mechanism. Improving something you know is already flawed is sometimes the most honest thing you can do for users.</p>
+  </div>
+
+</main>
+
+<footer class="cs-footer">
+  <p class="cs-footer-label">Next project</p>
+  <a href="index.html">Back to all work</a>
+</footer>
+
+</body>
+</html>
