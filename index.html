@@ -558,7 +558,7 @@ html,body{background:#fff!important;}
 					<div class="content-wrapper">
 						
 				<div id="content_6hw1si1hh" class="column-content" data-module="image">
-					<div class="ce-image"><img src="assets/represent-index.png" alt="Represent app" class="is-content" style="width:100%!important;height:auto!important;display:block!important;"></div>
+					<div class="ce-image"><img src="assets/represent-index.png" alt="Represent app" class="is-content" style="max-width:280px;width:100%;height:auto;display:block;"></div>
 				</div>
 			
 					</div>
@@ -1646,6 +1646,13 @@ var semplice = {"default_api_url":"https:\/\/rysong04-creator.github.io\/wp-json
   var workLink = document.getElementById('rsWorkLink');
   if(workLink) workLink.addEventListener('click', function(){ menuOverlay.classList.remove('open'); });
 })();
+if(typeof gsap !== 'undefined') {
+  gsap.set('#content-holder #content_6hw1si1hh', {translateX:'-2.7777777777778rem'});
+  gsap.to('#content-holder #content_6hw1si1hh', {
+    x: 0, duration: 0.8, ease: 'none',
+    scrollTrigger: { trigger: '#content_6hw1si1hh', start: 'top bottom-=25%' }
+  });
+}
 			</script>
 			</body>
 </html>
