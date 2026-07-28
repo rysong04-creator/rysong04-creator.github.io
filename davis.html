@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finding Davis City Hall Ryan Song</title>
+<link rel="icon" href="assets/2021-favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@100;300;400;500;700&display=swap">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Jost', sans-serif;
+  background: #fff;
+  color: #111;
+  font-weight: 300;
+}
+
+/* ── Nav ── */
+.cs-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32px 60px;
+  border-bottom: 1px solid #e8e8e8;
+}
+.cs-nav-name {
+  font-weight: 100;
+  font-size: 22px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #111;
+}
+.cs-nav-back {
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #888;
+  transition: color 0.2s;
+}
+.cs-nav-back:hover { color: #111; }
+
+/* ── Layout ── */
+.cs-wrap {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 80px 40px 160px;
+}
+
+/* ── Hero ── */
+.cs-eyebrow {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: 20px;
+}
+.cs-title {
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+.cs-subtitle {
+  font-size: 1.15rem;
+  font-weight: 300;
+  line-height: 1.75;
+  color: #444;
+  max-width: 680px;
+  margin-bottom: 16px;
+}
+.cs-meta-line {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #aaa;
+  margin-bottom: 64px;
+}
+
+/* ── Image placeholder ── */
+.cs-img {
+  width: 100%;
+  background: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #aaa;
+  margin: 40px 0;
+}
+.cs-img-tall  { aspect-ratio: 4/3; }
+.cs-img-wide  { aspect-ratio: 16/9; }
+.cs-img-short { aspect-ratio: 21/9; }
+
+/* ── Meta rail ── */
+.cs-rail {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 32px;
+  padding: 40px 0;
+  border-top: 1px solid #e8e8e8;
+  border-bottom: 1px solid #e8e8e8;
+  margin-bottom: 72px;
+}
+.cs-rail-item {}
+.cs-rail-label {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #aaa;
+  margin-bottom: 8px;
+}
+.cs-rail-value {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.6;
+  color: #111;
+}
+
+/* ── Sections ── */
+.cs-section {
+  margin-bottom: 80px;
+}
+.cs-section-label {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #aaa;
+  margin-bottom: 20px;
+}
+.cs-h2 {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 300;
+  line-height: 1.25;
+  margin-bottom: 20px;
+}
+.cs-h2-italic {
+  font-style: italic;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 300;
+  line-height: 1.25;
+  margin-bottom: 20px;
+}
+.cs-p {
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.85;
+  color: #333;
+  margin-bottom: 20px;
+}
+.cs-p:last-child { margin-bottom: 0; }
+
+/* ── Pull quote ── */
+.cs-quote {
+  border-left: 2px solid #111;
+  padding: 4px 0 4px 24px;
+  margin: 28px 0;
+}
+.cs-quote p {
+  font-size: 1rem;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.7;
+  color: #555;
+  margin-bottom: 8px;
+}
+.cs-quote p:last-child { margin-bottom: 0; }
+
+/* ── Stats ── */
+.cs-stats {
+  display: flex;
+  gap: 48px;
+  margin: 32px 0;
+  flex-wrap: wrap;
+}
+.cs-stat-num {
+  font-size: 2.4rem;
+  font-weight: 100;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.cs-stat-label {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #888;
+}
+
+/* ── Recommendation list ── */
+.cs-recs {
+  list-style: none;
+  margin: 24px 0;
+}
+.cs-recs li {
+  display: flex;
+  gap: 20px;
+  padding: 20px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: #333;
+}
+.cs-recs li:first-child { border-top: 1px solid #eee; }
+.cs-rec-num {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  color: #aaa;
+  padding-top: 4px;
+  flex-shrink: 0;
+  width: 24px;
+}
+
+/* ── Divider ── */
+.cs-divider {
+  border: none;
+  border-top: 1px solid #e8e8e8;
+  margin: 64px 0;
+}
+
+/* ── Footer ── */
+.cs-footer {
+  text-align: center;
+  padding: 60px 0 80px;
+  border-top: 1px solid #e8e8e8;
+}
+.cs-footer-label {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #aaa;
+  margin-bottom: 16px;
+}
+.cs-footer a {
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #111;
+  text-decoration: none;
+  border-bottom: 1px solid #111;
+  padding-bottom: 2px;
+  transition: opacity 0.2s;
+}
+.cs-footer a:hover { opacity: 0.5; }
+</style>
+</head>
+<body>
+
+<nav class="cs-nav">
+  <a href="index.html" class="cs-nav-name">Ryan Song</a>
+  <a href="index.html" class="cs-nav-back">← Back to work</a>
+</nav>
+
+<main class="cs-wrap">
+
+  <!-- Hero -->
+  <p class="cs-eyebrow">City of Davis · UX Designer · Jan Mar 2026</p>
+  <h1 class="cs-title">Finding Davis City Hall</h1>
+  <p class="cs-subtitle">Visitors couldn't figure out which building to enter at Davis City Hall. Through two rounds of research including a first concept our users rejected my team landed on a wayfinding solution and a set of recommendations for the City.</p>
+  <p class="cs-meta-line">Human-Centered Design &nbsp;·&nbsp; Team of 4 &nbsp;·&nbsp; Jan Mar 2026</p>
+
+  <!-- Meta rail -->
+  <div class="cs-rail">
+    <div class="cs-rail-item">
+      <p class="cs-rail-label">Role</p>
+      <p class="cs-rail-value">UX Designer [your specific ownership]</p>
+    </div>
+    <div class="cs-rail-item">
+      <p class="cs-rail-label">Timeframe</p>
+      <p class="cs-rail-value">January March 2026</p>
+    </div>
+    <div class="cs-rail-item">
+      <p class="cs-rail-label">Team</p>
+      <p class="cs-rail-value">4 designers (Team Earl Gray)</p>
+    </div>
+    <div class="cs-rail-item">
+      <p class="cs-rail-label">Methods</p>
+      <p class="cs-rail-value">User interviews, concept testing, persona & POV synthesis, lo-fi prototyping</p>
+    </div>
+    <div class="cs-rail-item">
+      <p class="cs-rail-label">Deliverable</p>
+      <p class="cs-rail-value">Wayfinding map + recommendations</p>
+    </div>
+  </div>
+
+  <!-- 1. Challenge -->
+  <div class="cs-section">
+    <p class="cs-section-label">The Challenge</p>
+    <h2 class="cs-h2">How might we improve the visitor experience at Davis City Hall while helping the space better reflect the vibrancy and character of the Davis community?</h2>
+    <p class="cs-p">We took a human-centered approach: rather than assume what would help, we started by talking to the people who actually use City Hall.</p>
+    <img src="assets/davis1.jpg" alt="Research ideation wall" style="width:100%;display:block;">
+  </div>
+
+  <!-- 2. Research -->
+  <div class="cs-section">
+    <p class="cs-section-label">Research</p>
+    <h2 class="cs-h2">Who we talked to</h2>
+    <div class="cs-stats">
+      <div>
+        <p class="cs-stat-num">14</p>
+        <p class="cs-stat-label">People interviewed</p>
+      </div>
+      <div>
+        <p class="cs-stat-num">9</p>
+        <p class="cs-stat-label">Long-term residents</p>
+      </div>
+      <div>
+        <p class="cs-stat-num">3</p>
+        <p class="cs-stat-label">City employees</p>
+      </div>
+      <div>
+        <p class="cs-stat-num">2</p>
+        <p class="cs-stat-label">Business owners</p>
+      </div>
+    </div>
+    <p class="cs-p">This mix let us hear the experience from the people who use City Hall, the people who run it, and the surrounding community.</p>
+    <img src="assets/davis2.jpg" alt="User interview" style="width:100%;display:block;">
+  </div>
+
+  <!-- 3. First concept -->
+  <div class="cs-section">
+    <p class="cs-section-label">First Concept And Why It Failed</p>
+    <h2 class="cs-h2-italic">"This would be great downtown, but not at City Hall."</h2>
+    <p class="cs-p">Our first idea was an <strong>Affirmation Tree</strong> ("Flori, the Wishing Plant") a community installation meant to align and connect the Davis community.</p>
+    <p class="cs-p"><strong>We tested it. It didn't land.</strong> Visitors were clear that City Hall wasn't the place for it:</p>
+    <div class="cs-quote">
+      <p>"This would be great downtown, but not at City Hall."</p>
+      <p>"People who come to City Hall want to get things done and not stay any longer than they need to."</p>
+      <p>"It's a great idea, but there's a time and place for things like this, and City Hall is not that place."</p>
+    </div>
+    <img src="assets/davis3.jpg" alt="Flori the Wishing Plant" style="width:100%;display:block;">
+    <p class="cs-p">A first concept that real users rejected and that we were willing to drop is the most convincing evidence that you design for users, not for yourself.</p>
+  </div>
+
+  <!-- 4. Pivot -->
+  <div class="cs-section">
+    <p class="cs-section-label">The Pivot</p>
+    <h2 class="cs-h2">Co-creating with visitors</h2>
+    <p class="cs-p">So we went back to City Hall with new ideas and asked visitors directly what they wanted. One direction rose above the rest: <strong>better wayfinding and navigation.</strong></p>
+    <img src="assets/davis4.png" alt="Wayfinding ideation board" style="width:100%;display:block;">
+  </div>
+
+  <!-- 5. Synthesis -->
+  <div class="cs-section">
+    <p class="cs-section-label">Synthesis</p>
+    <h2 class="cs-h2">The real problem</h2>
+    <p class="cs-p">We built a persona from a recurring story. <strong>John, ~36, a Davis resident</strong>, came to enroll his daughter in recreational classes and got lost trying to find the right building:</p>
+    <div class="cs-quote">
+      <p>"I just put the address I received into Google Maps, and somehow I ended up at the senior center!"</p>
+    </div>
+    <img src="assets/davis5.png" alt="John persona" style="width:100%;display:block;">
+    <p class="cs-p">The same frustration showed up across interviews City Hall's layout made navigation hard, and that friction chipped away at the City's credibility with visitors.</p>
+    <div class="cs-quote">
+      <p>"If there were one thing I would change about City Hall, it would be navigation."</p>
+      <p>"I was so frustrated driving around trying to find where to go."</p>
+    </div>
+    <img src="assets/davis6.png" alt="Unclear which building to enter" style="width:100%;display:block;">
+    <p class="cs-p">The core issue: the single address (23 Russell Blvd) drops visitors at an ambiguous point across a multi-building civic center with no clear signal of which entrance serves which purpose.</p>
+  </div>
+
+  <!-- 6. Prototype -->
+  <div class="cs-section">
+    <p class="cs-section-label">Prototype & Test</p>
+    <h2 class="cs-h2">A wayfinding map</h2>
+    <p class="cs-p">Based on those findings, we built a <strong>low-fidelity wayfinding map</strong> labeling entrances, visitor parking, the permit office, Parks & Rec, and City Council meetings and tested it with City Hall visitors.</p>
+    <img src="assets/davis7.png" alt="Prototype wayfinding map" style="width:100%;display:block;">
+  </div>
+
+  <!-- 7. Recommendations -->
+  <div class="cs-section">
+    <p class="cs-section-label">Recommendations</p>
+    <h2 class="cs-h2">What we delivered to the City</h2>
+    <ul class="cs-recs">
+      <li>
+        <span class="cs-rec-num">01</span>
+        <span>Put the wayfinding map on the City Hall website, right next to the address downloadable as a JPG.</span>
+      </li>
+      <li>
+        <span class="cs-rec-num">02</span>
+        <span>Fix the Google Maps pins tied to City Hall addresses so visitors land in the right place.</span>
+      </li>
+      <li>
+        <span class="cs-rec-num">03</span>
+        <span>Add onsite physical signage directing visitors to Parks & Rec sign-ups, the Permit Office, City Council meetings, the Rec Center, the Senior Center, and visitor parking.</span>
+      </li>
+    </ul>
+    <img src="assets/davis8.png" alt="Website mockup with wayfinding map" style="width:100%;display:block;margin-top:40px;">
+  </div>
+
+  <!-- 8. Outcome -->
+  <div class="cs-section">
+    <p class="cs-section-label">Outcome</p>
+    <h2 class="cs-h2">What happened next</h2>
+    <p class="cs-p">We presented the wayfinding solution and recommendations to the City of Davis. Proposed next steps: updating the City Hall website and links, fixing the map pins, and testing with more visitors who use the map.</p>
+    <p class="cs-p" style="color:#aaa;font-size:0.9rem;">[Verify with team whether the City adopted any recommendations before publishing this section.]</p>
+  </div>
+
+  <hr class="cs-divider">
+
+  <!-- 9. Reflection -->
+  <div class="cs-section">
+    <p class="cs-section-label">Reflection</p>
+    <h2 class="cs-h2-italic">What I took from it</h2>
+    <p class="cs-p">Our first concept felt right to us but wrong to users testing it cheaply, before we'd over-invested, let us pivot to what visitors actually needed. It's the clearest lesson I took from the project.</p>
+  </div>
+
+</main>
+
+<footer class="cs-footer">
+  <p class="cs-footer-label">Next project</p>
+  <a href="index.html">Back to all work</a>
+</footer>
+
+</body>
+</html>
