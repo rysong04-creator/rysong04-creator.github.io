@@ -342,6 +342,14 @@ html,body{background:#fff!important;}
 /* ---- Media container ---- */
 .rs-media-container{flex:1;position:relative;overflow:hidden;max-width:1028px;}
 .rs-vid{display:block;width:100%;height:670px;object-fit:cover;}
+.rs-anim{position:relative;width:100%;height:670px;overflow:hidden;background:#0e0e0d;color:#efece6;container-type:size;font-family:'Jost',sans-serif;}
+.rs-anim::before{content:"";position:absolute;inset:0;background:url('assets/textured background.jpg') repeat;mix-blend-mode:screen;opacity:.07;pointer-events:none;z-index:3;}
+.rs-anim::after{content:"";position:absolute;inset:22px;border:1px solid rgba(239,236,230,.1);pointer-events:none;}
+.rsa-meta{position:absolute;z-index:2;font-size:11px;font-weight:400;letter-spacing:.28em;text-transform:uppercase;color:rgba(239,236,230,.7);opacity:0;transition:opacity 1.2s;text-shadow:0 0 12px #0e0e0d,0 0 4px #0e0e0d;}
+.rs-anim.ready .rsa-meta{opacity:1;}
+.rsa-tl{top:36px;left:40px;}.rsa-tr{top:36px;right:40px;}.rsa-bl{bottom:36px;left:40px;}.rsa-br{bottom:36px;right:40px;font-variant-numeric:tabular-nums;}
+#rsaCanvas{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:crosshair;touch-action:pan-y;}
+.rsa-meta{pointer-events:none;}
 
 .rs-video-panel{transform:translateX(0);opacity:1;transition:transform .55s cubic-bezier(.77,0,.175,1),opacity .35s;}
 .rs-about-panel{position:absolute;inset:0;display:flex;align-items:stretch;transform:translateX(100%);opacity:0;transition:transform .55s cubic-bezier(.77,0,.175,1),opacity .35s;background:#ddd;}
@@ -373,7 +381,9 @@ html,body{background:#fff!important;}
 
 @media(max-width:640px){
   .rs-nav{padding:20px 24px;}.rs-menu-btn{right:24px;font-size:2.8rem;}.rs-menu-close{right:24px;}
-  .rs-vid{height:38vh;}.rs-hero-content{gap:8px;padding:0 8px;}
+  .rs-vid,.rs-anim{height:38vh;}.rs-hero-content{gap:8px;padding:0 8px;}
+  .rsa-meta{font-size:8px;letter-spacing:.2em;}.rsa-tl,.rsa-tr{top:22px;}.rsa-bl,.rsa-br{bottom:22px;}.rsa-tl,.rsa-bl{left:22px;}.rsa-tr,.rsa-br{right:22px;}
+  .rs-anim::after{inset:12px;}.rsa-tr,.rsa-bl{display:none;}
   .rs-about-img{width:36%;}
   .rs-tagline{padding:4vh 24px 0;}
 }
@@ -448,9 +458,13 @@ html,body{background:#fff!important;}
     <button class="rs-arrow rs-arrow-left" id="rsArrowLeft">&#8249;</button>
     <div class="rs-media-container">
       <div class="rs-video-panel">
-        <video class="rs-vid" autoplay muted loop playsinline>
-          <source src="assets/main vid.mp4" type="video/mp4">
-        </video>
+        <div class="rs-anim" id="rsAnim" role="img" aria-label="Generative flow-field animation of drifting lines that swirl around the cursor">
+          <canvas id="rsaCanvas"></canvas>
+          <span class="rsa-meta rsa-tl">Ryan Song</span>
+          <span class="rsa-meta rsa-tr">Move to disturb &middot; Click to reseed</span>
+          <span class="rsa-meta rsa-bl">San Diego, CA &mdash; UC Davis &rsquo;26</span>
+          <span class="rsa-meta rsa-br" id="rsaSeed">Seed 0000</span>
+        </div>
       </div>
       <div class="rs-about-panel">
         <img src="assets/about me.JPG" alt="Ryan Song" class="rs-about-img">
@@ -1649,6 +1663,107 @@ var semplice = {"default_api_url":"https:\/\/rysong04-creator.github.io\/wp-json
   menuOverlay.addEventListener('click', function(e){ if(e.target===menuOverlay) menuOverlay.classList.remove('open'); });
   var workLink = document.getElementById('rsWorkLink');
   if(workLink) workLink.addEventListener('click', function(){ menuOverlay.classList.remove('open'); });
+})();
+(function(){
+  var anim = document.getElementById('rsAnim');
+  var cv = document.getElementById('rsaCanvas');
+  if(!anim || !cv || !cv.getContext) return;
+  var ctx = cv.getContext('2d');
+  var seedEl = document.getElementById('rsaSeed');
+  var W = 0, H = 0, dpr = 0, ps = [], t = 0, visible = true, raf = 0;
+  var F = {};                                   // field params, reseeded
+  var m = { x: -9999, y: -9999, tx: -9999, ty: -9999, on: 0, k: 0 };
+  var BG = '14,14,13', INK = '239,236,230';
+
+  function reseed(){
+    var s = Math.floor(Math.random()*9000)+1000;
+    F = { f1: .0018+Math.random()*.0026, f2: .0018+Math.random()*.0026, f3: .0012+Math.random()*.002,
+          s1: Math.random()*99, s2: Math.random()*99, s3: Math.random()*99,
+          amp: .9+Math.random()*.9, rot: Math.random()*Math.PI*2 };
+    seedEl.textContent = 'Seed ' + s;
+  }
+  function field(x, y){
+    var n = Math.sin(x*F.f1 + F.s1 + t*.12) + Math.sin(y*F.f2 + F.s2 - t*.09)
+          + Math.sin((x*.6 - y*.8)*F.f3 + F.s3 + t*.17);
+    return n*F.amp + F.rot + t*.02;
+  }
+  var LEN = 36;                                 // trail length in points
+  function spawn(p){
+    p.x = Math.random()*W; p.y = Math.random()*H;
+    p.life = 90 + Math.random()*260; p.age = 0; p.die = false;
+    p.hi = Math.random() < .08; p.h = [p.x, p.y];
+    return p;
+  }
+  function resize(){
+    var r = anim.getBoundingClientRect();
+    var d = Math.min(window.devicePixelRatio || 1, 2);
+    if(Math.abs(r.width - W) < 2 && Math.abs(r.height - H) < 2 && d === dpr) return;
+    dpr = d; W = Math.max(1, r.width); H = Math.max(1, r.height);
+    cv.width = Math.round(W*dpr); cv.height = Math.round(H*dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.fillStyle = 'rgb('+BG+')'; ctx.fillRect(0, 0, W, H);
+    var n = Math.round(Math.min(1400, Math.max(260, W*H/520)));
+    ps = []; for(var i=0;i<n;i++) spawn(ps[i] = {});
+  }
+
+  function step(){
+    t += 1/60;
+    m.x += (m.tx - m.x)*.12; m.y += (m.ty - m.y)*.12;
+    m.k += ((m.on ? 1 : 0) - m.k)*.05;
+    ctx.fillStyle = 'rgb('+BG+')'; ctx.fillRect(0, 0, W, H);
+    var R = Math.min(W, H)*.28, P = [[new Path2D(), new Path2D(), new Path2D()], [new Path2D(), new Path2D(), new Path2D()]];
+    for(var i=0;i<ps.length;i++){
+      var p = ps[i], h = p.h;
+      if(!p.die){
+        var a = field(p.x, p.y), vx = Math.cos(a), vy = Math.sin(a);
+        if(m.k > .01){
+          var dx = p.x - m.x, dy = p.y - m.y, d = Math.sqrt(dx*dx + dy*dy) || 1;
+          if(d < R){ var f = (1 - d/R)*m.k*2.4; vx += (-dy/d)*f + (dx/d)*f*.35; vy += (dx/d)*f + (dy/d)*f*.35; }
+        }
+        var sp = p.hi ? 2 : 1.5;
+        p.x += vx*sp; p.y += vy*sp; h.push(p.x, p.y);
+        if(++p.age > p.life || p.x < -5 || p.y < -5 || p.x > W+5 || p.y > H+5) p.die = true;
+      }
+      if(h.length > LEN*2 || p.die) h.splice(0, 2);      // dying trails shrink away instead of popping
+      if(p.die && h.length < 4){ spawn(p); continue; }
+      var n = h.length/2 - 1, g = P[p.hi ? 1 : 0];
+      for(var j=0;j<n;j++){
+        var path = g[Math.min(2, Math.floor(j*3/n))];
+        path.moveTo(h[j*2], h[j*2+1]); path.lineTo(h[j*2+2], h[j*2+3]);
+      }
+    }
+    var A = [[.05, .13, .26], [.18, .45, .85]];
+    ctx.lineWidth = 1;
+    for(var q=0;q<2;q++) for(var k=0;k<3;k++){ ctx.strokeStyle = 'rgba('+INK+','+A[q][k]+')'; ctx.stroke(P[q][k]); }
+  }
+  function loop(){
+    raf = 0;
+    if(!visible || document.hidden) return;
+    step();
+    raf = requestAnimationFrame(loop);
+  }
+  function kick(){ if(!raf) raf = requestAnimationFrame(loop); }
+
+  function pos(e){ var r = cv.getBoundingClientRect(); m.tx = e.clientX - r.left; m.ty = e.clientY - r.top; }
+  cv.addEventListener('pointermove', function(e){ pos(e); if(!m.on){ m.x = m.tx; m.y = m.ty; } m.on = 1; });
+  cv.addEventListener('pointerleave', function(){ m.on = 0; });
+  cv.addEventListener('pointerdown', function(e){ pos(e); reseed(); });
+
+  reseed(); resize();
+  if('ResizeObserver' in window) new ResizeObserver(function(){ resize(); }).observe(anim);
+  else window.addEventListener('resize', resize);
+  anim.classList.add('ready');
+
+  if(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches){
+    for(var i=0;i<240;i++) step();               // one still, settled frame
+    return;
+  }
+  setInterval(function(){ if(visible && !document.hidden) reseed(); }, 14000);
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(e){ visible = e[0].isIntersecting; if(visible) kick(); }).observe(anim);
+  }
+  document.addEventListener('visibilitychange', kick);
+  kick();
 })();
 if(typeof gsap !== 'undefined') {
   gsap.set('#content-holder #content_6hw1si1hh', {translateX:'-2.7777777777778rem'});
